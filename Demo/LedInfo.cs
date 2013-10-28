@@ -6,27 +6,37 @@ namespace Demo
 {
     public delegate void deleControlInvoke(object o);
 
-    public class CommandInfo
+    public class command
     {
         public string name = string.Empty;
-        public string info = string.Empty;
+        public string para = string.Empty;
         public string timeStamp = string.Empty;
-        public string ledIP = string.Empty;
-        public string status = string.Empty;
+        //public string ledIP = string.Empty;
+        //public string status = string.Empty;
+        public string msgType;
 
-        public CommandInfo()
+        public command()
         {
 
         }
-        public CommandInfo(string _commandName, string _info, string _time, string _ip)
+        public command(string _commandName, string _para)
         {
             this.name = _commandName;
-            this.info = _info;
-            this.timeStamp = _time;
-            this.ledIP = _ip;
+            this.para = _para;
+            //this.timeStamp = _time;
+            //this.ledIP = _ip;
         }
     }
-
+    public class statusMsg
+    {
+        public string status;
+        public string cmds;
+        public statusMsg() { }
+        public statusMsg(string _status)
+        {
+            this.status = _status;
+        }
+    }
     public class LedInfo
     {
         public string info = string.Empty;

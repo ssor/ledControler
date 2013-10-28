@@ -14,6 +14,7 @@ namespace rfidCheck
         public static int tcp_port = 9002;
         public static string restIp = "127.0.0.1";
         //public static string restIp = "192.168.1.100";
+        public static string wssUrl;
 
         public static string restUrl =
             "http://" + restIp + ":" + tcp_port + "/index.php/LED/led/getLedInfos";
@@ -32,6 +33,10 @@ namespace rfidCheck
         public static string getCommandRestUrlComet()
         {
             return "http://" + restIp + ":" + tcp_port + "/index.php/LED/CommandInfo/get_command_info_comet";
+        }
+        public static string getWssUrl()
+        {
+            return "ws://192.168.57.105:3003";
         }
     }
 }

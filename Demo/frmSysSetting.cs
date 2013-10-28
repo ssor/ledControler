@@ -28,53 +28,54 @@ namespace Demo
         {
             bool bR = true;
 
-            string strPort = this.txtPort.Text;
-            try
-            {
-                int iport = int.Parse(strPort);
-                if (iport < 80)
-                {
-                    bR = false;
-                    MessageBox.Show("端口设置不符合规定，请重新设置！");
-                    goto end;
-                }
-                strPort = iport.ToString();
-            }
-            catch (System.Exception ex)
-            {
-                bR = false;
-                MessageBox.Show("端口设置不符合规定，请重新设置！");
-                goto end;
-            }
-            string strIP = this.txtIP.Text;
-            try
-            {
-                IPAddress _ip = IPAddress.Parse(strIP);
+            //string strPort = this.txtPort.Text;
+            //try
+            //{
+            //    int iport = int.Parse(strPort);
+            //    if (iport < 80)
+            //    {
+            //        bR = false;
+            //        MessageBox.Show("端口设置不符合规定，请重新设置！");
+            //        goto end;
+            //    }
+            //    strPort = iport.ToString();
+            //}
+            //catch (System.Exception ex)
+            //{
+            //    bR = false;
+            //    MessageBox.Show("端口设置不符合规定，请重新设置！");
+            //    goto end;
+            //}
+            //string strIP = this.txtIP.Text;
+            //try
+            //{
+            //    IPAddress _ip = IPAddress.Parse(strIP);
 
-            }
-            catch (System.Exception ex)
-            {
-                bR = false;
-                MessageBox.Show("IP地址设置不符合规定，请重新设置！");
-                goto end;
-            }
+            //}
+            //catch (System.Exception ex)
+            //{
+            //    bR = false;
+            //    MessageBox.Show("IP地址设置不符合规定，请重新设置！");
+            //    goto end;
+            //}
         end:
             return bR;
         }
         void loadConfig()
         {
-            this.txtPort.Text = sysConfig.tcp_port.ToString();
-            this.txtIP.Text = sysConfig.restIp;
+            //this.txtPort.Text = sysConfig.tcp_port.ToString();
+            //this.txtIP.Text = sysConfig.restIp;
+            this.txtIP.Text = sysConfig.wssUrl;
         }
         private void button1_Click(object sender, EventArgs e)
         {
             if (this.checkValidation())
             {
-                ConfigDB.saveConfig("ip", this.txtIP.Text);
-                ConfigDB.saveConfig("port", this.txtPort.Text);
+                ConfigDB.saveConfig("wssUrl", this.txtIP.Text);
+                //ConfigDB.saveConfig("port", this.txtPort.Text);
 
-                sysConfig.restIp = this.txtIP.Text;
-                sysConfig.tcp_port = int.Parse(this.txtPort.Text);
+                sysConfig.wssUrl = this.txtIP.Text;
+                //sysConfig.tcp_port = int.Parse(this.txtPort.Text);
 
                 this.Close();
             }

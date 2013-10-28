@@ -26,16 +26,20 @@ namespace Demo
         static void initialConfig()
         {
             object o = null;
-            o = ConfigDB.getConfig("ip");
+            o = ConfigDB.getConfig("wssUrl");
             if (o != null)
             {
-                sysConfig.restIp = (string)o;
+                sysConfig.wssUrl = (string)o;
             }
-            o = ConfigDB.getConfig("port");
-            if (o != null)
+            else
             {
-                sysConfig.tcp_port = int.Parse((string)o);
+                sysConfig.wssUrl = "ws://127.0.0.1";
             }
+            //o = ConfigDB.getConfig("port");
+            //if (o != null)
+            //{
+            //    sysConfig.tcp_port = int.Parse((string)o);
+            //}
         }
     }
 }
