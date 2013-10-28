@@ -8,11 +8,11 @@ namespace Demo
 
     public class CommandInfo
     {
-        public string commandName = string.Empty;
+        public string name = string.Empty;
         public string info = string.Empty;
-        public string startTime = string.Empty;
+        public string timeStamp = string.Empty;
         public string ledIP = string.Empty;
-        public string state = string.Empty;
+        public string status = string.Empty;
 
         public CommandInfo()
         {
@@ -20,9 +20,9 @@ namespace Demo
         }
         public CommandInfo(string _commandName, string _info, string _time, string _ip)
         {
-            this.commandName = _commandName;
+            this.name = _commandName;
             this.info = _info;
-            this.startTime = _time;
+            this.timeStamp = _time;
             this.ledIP = _ip;
         }
     }

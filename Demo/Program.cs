@@ -19,7 +19,7 @@ namespace Demo
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new Form1());
             initialConfig();
-            PayCheck.start_loop_check("yingkou2012");
+            //PayCheck.start_loop_check("yingkou2012");
             Application.Run(new frmMain());
         }
 

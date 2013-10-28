@@ -132,18 +132,18 @@ namespace Demo
                 object olist = fastJSON.JSON.Instance.ToObjectList(cmds, typeof(List<CommandInfo>), typeof(CommandInfo));
                 foreach (CommandInfo c in (List<CommandInfo>)olist)
                 {
-                    if (string.Compare(this.lastUpdateTimeStamp, c.startTime, true) < 0)//如果命令的时间较晚
+                    if (string.Compare(this.lastUpdateTimeStamp, c.timeStamp, true) < 0)//如果命令的时间较晚
                     {
-                        this.lastUpdateTimeStamp = c.startTime;
+                        this.lastUpdateTimeStamp = c.timeStamp;
                     }
-                    switch (c.commandName)
+                    switch (c.name)
                     {
                         case "tts":
                             Debug.WriteLine(
                                             string.Format("frmMain.获取到tts发布信息，内容为  -> tts = {0}   {1}"
-                                                            , c.info, c.startTime));
+                                                            , c.info, c.timeStamp));
 
-                            this.appendLog(string.Format("获取到tts发布信息，内容为 {0} {1}", c.info, c.startTime));
+                            this.appendLog(string.Format("获取到tts发布信息，内容为 {0} {1}", c.info, c.timeStamp));
                             if (this.ckbtts.Checked)
                             {
                                 bool bAlreadyExist = false;
@@ -151,7 +151,7 @@ namespace Demo
                                 Manualstate.Reset();
 
                                 string strSelect = string.Format("type = '{0}' and info = '{1}' and time = '{2}'",
-                                                c.commandName, c.info, c.startTime);
+                                                c.name, c.info, c.timeStamp);
                                 DataRow[] rows = __dtCommandInfo.Select(strSelect);
                                 if (rows.Length > 0)//说明
                                 {
@@ -161,7 +161,7 @@ namespace Demo
                                 {
                                     Debug.WriteLine("添加新行到表中 " + strSelect);
                                     __dtCommandInfo.Rows.Add(new object[] {
-                                    c.commandName,c.info,c.ledIP,c.startTime,"new"
+                                    c.name,c.info,c.ledIP,c.timeStamp,"new"
                                 });
                                 }
 
@@ -178,9 +178,9 @@ namespace Demo
                             //发现新的led信息，需要发送到相应的led屏上
                             Debug.WriteLine(
                                 string.Format("frmMain.__httpHelper_RequestCompleted_getCommand  -> led = {0}    {1}  {2}"
-                                , c.ledIP, c.info, c.startTime));
+                                , c.ledIP, c.info, c.timeStamp));
                             c.ledIP = "172.16.13.99";
-                            this.appendLog(string.Format("获取到led发布信息，ip为 {0}   内容为 {1}  {2}", c.ledIP, c.info, c.startTime));
+                            this.appendLog(string.Format("获取到led发布信息，ip为 {0}   内容为 {1}  {2}", c.ledIP, c.info, c.timeStamp));
                             if (this.ckbled.Checked)
                             {
                                 try
